@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-test-nodeport-service
+spec:
+  type: NodePort
+  ports:
+  - name: nginx-svc
+  # nodePort: 32080 # Listening port on Nodes
+    port: 80 # Listening port on ClusterIP
+    targetPort: 8080 # Pod’s listening port
+    protocol: TCP
+  selector:
+    app: nginx-test
+
